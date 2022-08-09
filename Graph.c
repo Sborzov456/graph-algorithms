@@ -46,7 +46,8 @@ graph *addVertex(graph *graph, int x, int y, int value) {
     newVertex->edge = NULL;
     if (graph->head == NULL) {
         graph->head = newVertex;
-    } else {
+    }
+    else {
         newVertex->next = graph->head;
         graph->head = newVertex;
     }
@@ -63,7 +64,8 @@ graph *addEdge(graph *graph, int firstVertexValue, int secondVertexValue, int we
         firstVertex->edge = newEdge;
         firstVertex->edge->next = NULL;
         newEdge->endPoint = secondVertex;
-    } else {
+    }
+    else {
         newEdge->next = firstVertex->edge;
         firstVertex->edge = newEdge;
         newEdge->endPoint = secondVertex;
@@ -76,12 +78,12 @@ graph *deleteVertex(graph *graph, int value) {
     vertex *vertexToDelete = findVertex(graph, value);
     vertex *bufHead = graph->head;
     while (bufHead != NULL) {
-        edge *tmpEdgeList = bufHead->edge;
-        while (tmpEdgeList != NULL) {
-            if (tmpEdgeList->endPoint->value == vertexToDelete->value) {
+        edge *bufEdgeListHead = bufHead->edge;
+        while (bufEdgeListHead != NULL) {
+            if (bufEdgeListHead->endPoint->value == vertexToDelete->value) {
                 graph = deleteEdge(graph, bufHead->value, value);
             }
-            tmpEdgeList = tmpEdgeList->next;
+            bufEdgeListHead = bufEdgeListHead->next;
         }
         bufHead = bufHead->next;
     }
@@ -109,6 +111,56 @@ graph *deleteVertexFromList(graph *graph, int value) {
         return graph;
     }
 }
+
+edge *deleteFromEdgeList(edge *edgeListHead, int secondVertexValue) {
+    edge *bufEdgeListHead = edgeListHead;
+    edge *previousEdge;
+    while ((bufEdgeListHead != NULL) && (bufEdgeListHead->endPoint->value != secondVertexValue)) {
+        previousEdge = bufEdgeListHead;
+        bufEdgeListHead = bufEdgeListHead->next;
+    }
+    if (bufEdgeListHead == edgeListHead) {
+        edgeListHead = edgeListHead->next;
+        free(bufEdgeListHead);
+        return edgeListHead;
+    }
+    else {
+        previousEdge->next = bufEdgeListHead->next;
+        free(bufEdgeListHead);
+        return edgeListHead;
+    }
+}
+
+vertex *findVertex(graph *graph, int value) {
+    vertex *bufHead = graph->head;
+    while ((bufHead != NULL) && (bufHead->value != value)) {
+        bufHead = bufHead->next;
+    }
+    if (bufHead != NULL) {
+        return bufHead;
+    }
+    else {
+        return NULL;
+    }
+}
+
+void printGraph(graph *graph) {
+    vertex *bufHead = graph->head;
+    printf("Graph: \n");
+    while (bufHead != NULL) {
+        printf("%d(%d) -> ", bufHead->value, bufHead->index);
+        edge *bufEdgeListHead = bufHead->edge;
+        if (bufEdgeListHead != NULL) {
+            while (bufEdgeListHead != NULL) {
+                printf("%d ", bufEdgeListHead->endPoint->value);
+                bufEdgeListHead = bufEdgeListHead->next;
+            }
+        }
+        bufHead = bufHead->next;
+        printf("\n");
+    }
+}
+
 
 
 

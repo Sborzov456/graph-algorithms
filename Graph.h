@@ -19,11 +19,9 @@ graph* addEdge(graph* graph, int firstVertexValue, int secondVertexValue, int we
 graph* deleteVertex(graph* graph, int value); //delete vertex and it's edges by value
 graph* deleteVertexFromList(graph* graph, int value); // delete vertex form vertex list in graph; calls in deleteVertex(...) function
 graph* deleteEdge(graph* graph, int firstVertexValue, int secondVertexValue); //delete edge between two vertex
-vertex* findVertex(graph* g, int value);
-void printGraph(graph* graph);
-
-//Functions to work with vertex
 edge* deleteFromEdgeList(edge* edgeListHead, int secondVertexValue); //each vertex has a set of edges coming out of it. the function takes the value of the end point and delete edge from edges list of vertex.
+vertex* findVertex(graph* graph, int value);
+void printGraph(graph* graph);
 
 
 #endif
