@@ -33,7 +33,7 @@ graph *addEdge(graph *graph, int firstVertexValue, int secondVertexValue, int we
     vertex *secondVertex = findVertex(graph, secondVertexValue);
     edge *newEdge = (edge *) malloc(sizeof(edge));
     newEdge->weight = weight;
-    if (firstVertex->edge == NULL) {
+    if (!firstVertex->edge) {
         firstVertex->edge = newEdge;
         firstVertex->edge->next = NULL;
         newEdge->endPoint = secondVertex;
@@ -43,7 +43,7 @@ graph *addEdge(graph *graph, int firstVertexValue, int secondVertexValue, int we
         firstVertex->edge = newEdge;
         newEdge->endPoint = secondVertex;
     }
-    (graph->edgesNumber)++;
+    graph->edgesNumber++;
     return graph;
 }
 
@@ -103,7 +103,7 @@ graph *deleteVertexFromList(graph *graph, int value) {
 edge *deleteFromEdgeList(edge *edgeListHead, int secondVertexValue) {
     edge *bufEdgeListHead = edgeListHead;
     edge *previousEdge;
-    while ((bufEdgeListHead != NULL) && (bufEdgeListHead->endPoint->value != secondVertexValue)) {
+    while (bufEdgeListHead && bufEdgeListHead->endPoint->value != secondVertexValue) {
         previousEdge = bufEdgeListHead;
         bufEdgeListHead = bufEdgeListHead->next;
     }
@@ -121,7 +121,7 @@ edge *deleteFromEdgeList(edge *edgeListHead, int secondVertexValue) {
 
 vertex *findVertex(graph *graph, int value) {
     vertex *bufHead = graph->head;
-    while ((bufHead != NULL) && (bufHead->value != value)) {
+    while (bufHead && bufHead->value != value) {
         bufHead = bufHead->next;
     }
     if (bufHead != NULL) {
@@ -135,11 +135,11 @@ vertex *findVertex(graph *graph, int value) {
 void printGraph(graph *graph) {
     vertex *bufHead = graph->head;
     printf("Graph: \n");
-    while (bufHead != NULL) {
+    while (bufHead) {
         printf("%d(%d) -> ", bufHead->value, bufHead->index);
         edge *bufEdgeListHead = bufHead->edge;
-        if (bufEdgeListHead != NULL) {
-            while (bufEdgeListHead != NULL) {
+        if (bufEdgeListHead) {
+            while (bufEdgeListHead) {
                 printf("%d ", bufEdgeListHead->endPoint->value);
                 bufEdgeListHead = bufEdgeListHead->next;
             }
