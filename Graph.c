@@ -14,11 +14,8 @@ graph *addVertex(graph *graph, int x, int y, int value) {
     newVertex->y = y;
     newVertex->value = value;
     newVertex->next = NULL;
-//--------FOR DFS AND TOPOLOGICAL SORT--------
-    newVertex->color = -1;
-//--------FOR BELLMAN FORD ALGORITHM----------
-    newVertex->index = (graph->vertexNumber) + 1;
-//--------------------------------------------
+    newVertex->color = -1; // for DFS and topological sort
+    newVertex->index = (graph->vertexNumber) + 1; // for Bellman-Ford algorithm
     newVertex->edge = NULL;
     if (graph->head == NULL) {
         graph->head = newVertex;
@@ -53,9 +50,9 @@ graph *addEdge(graph *graph, int firstVertexValue, int secondVertexValue, int we
 graph *deleteVertex(graph *graph, int value) {
     vertex *vertexToDelete = findVertex(graph, value);
     vertex *bufHead = graph->head;
-    while (bufHead != NULL) {
+    while (bufHead) {
         edge *bufEdgeListHead = bufHead->edge;
-        while (bufEdgeListHead != NULL) {
+        while (bufEdgeListHead) {
             if (bufEdgeListHead->endPoint->value == vertexToDelete->value) {
                 graph = deleteEdge(graph, bufHead->value, value);
             }
@@ -65,14 +62,29 @@ graph *deleteVertex(graph *graph, int value) {
     }
     graph = deleteVertexFromList(graph, value);
     free(vertexToDelete->edge);
-    free(vertexToDelete);
+    return graph;
+}
+
+graph* deleteEdge(graph* graph, int firstVertexValue, int secondVertexValue)
+{
+    vertex* firstVertex = findVertex(graph, firstVertexValue);
+    edge* bufEdgeListHead = firstVertex->edge;
+    while (bufEdgeListHead)
+    {
+        if (bufEdgeListHead->endPoint->value == secondVertexValue)
+        {
+            firstVertex->edge = deleteFromEdgeList(firstVertex->edge, secondVertexValue);
+            return graph;
+        }
+        bufEdgeListHead = bufEdgeListHead->next;
+    }
     return graph;
 }
 
 graph *deleteVertexFromList(graph *graph, int value) {
     vertex *bufHead = graph->head;
     vertex *previousVertex = NULL;
-    while ((bufHead != NULL) && (bufHead->value != value)) {
+    while (bufHead && bufHead->value != value) {
         previousVertex = bufHead;
         bufHead = bufHead->next;
     }

@@ -15,7 +15,7 @@ int DFS(vertex *startVertex, vertex *previousVertex, int finishVertexValue)
     startVertex->color = 1;
     previousVertex = startVertex;
     edge *bufEdgeListHead = previousVertex->edge;
-    while (bufEdgeListHead != NULL) {
+    while (bufEdgeListHead) {
         vertex *neighbourVertex = bufEdgeListHead->endPoint;
         neighbourVertex->previousVertex = previousVertex;
         if (DFS(neighbourVertex, previousVertex, finishVertexValue)) {
