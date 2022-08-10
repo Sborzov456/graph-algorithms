@@ -1,29 +1,5 @@
 #include "Graph.h"
 
-struct vertex {
-    int x;
-    int y;
-    int value;
-    int index;//the number of vertex in list
-    int color;//-1 - white, 1 - gray [FOR DFS]
-    struct edge *edge;
-    struct vertex *next;
-    struct vertex *prev;//[FOR DFS]
-};
-
-struct edge {
-    vertex *endPoint; // and the vertex from which the edge leaves (startPoint) is determined by the vertex in the list of edges of which this edge is located
-    int weight;
-    struct edge *next;
-};
-
-struct graph {
-    int vertexNumber;
-    int edgesNumber;
-    vertex *head; // vertex list head
-};
-
-
 graph *create() {
     graph *newGraph = (graph *) malloc(sizeof(graph));
     newGraph->head = NULL;

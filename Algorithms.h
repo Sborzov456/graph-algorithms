@@ -11,7 +11,7 @@
 */
 
 //DFS
-int DFS(vertex* startVertex, vertex* previousVertex, int finishVertexKey); //the process of finding a way
+int DFS(vertex* startVertex, vertex* previousVertex, int finishVertexValue); //the process of finding a way
 void getDFSResult(graph* graph, int startVertexValue, int finishVertexValue); // prepares values to DFS(...) outputs the resulting way
 //need two functions since the DFS(...) is recursive function
 
@@ -20,6 +20,6 @@ int bellmanFord(graph* graph, int startVertexValue, int finishVertexValue);
 
 //Topological Sort
 void topologicalSort(graph* graph);
-int headspring(graph* graph, vertex* vertex); // returns 1 if vertex is headspring and -1 if not
+int headspring(graph* graph, vertex* checkingVertex); // returns 1 if vertex is headspring and 0 if not
 
 #endif

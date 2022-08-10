@@ -234,6 +234,12 @@ void print_graph(graph* g)
 //-------------------DFS---------------------
 int dfs(vertex* v_start, vertex* prev, int finish_key)
 {
+    printf("KEY: %d\n", v_start -> key);
+    if (prev != NULL) printf("PREV KEY: %d\n", prev -> key);
+    if (v_start -> prev != NULL) printf("NEIGHOBIOR PREV KEY: %d\n", v_start -> prev -> key);
+    else printf("PREV KEY: NULL\n");
+    printf("COLOR: %d\n", v_start -> color);
+    printf("---------\n");
     if(v_start -> key == finish_key) return 1;
     if(v_start -> color == 1) return -1;
     v_start -> color = 1;
@@ -344,11 +350,11 @@ int is_headspring(graph* g, vertex* v)
             }
             head = head -> next;
         }
-        return 1; //the headspring
+        //v -> color = 1;
+        return 1;//the headspring
     }
 
 }
-
 void topological_sort(graph* g)
 {
     int* sorted_array = (int*)malloc(g -> v*sizeof(int));

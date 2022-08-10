@@ -12,6 +12,29 @@ typedef struct edge edge;
 typedef struct vertex vertex;
 typedef struct graph graph;
 
+struct vertex {
+    int x;
+    int y;
+    int value;
+    int index;//the number of vertex in list
+    int color;//-1 - white, 1 - gray [FOR DFS]
+    struct edge *edge; // list of edges
+    struct vertex *next;
+    struct vertex *previousVertex;//[FOR DFS]
+};
+
+struct edge {
+    vertex *endPoint; // and the vertex from which the edge leaves (startPoint) is determined by the vertex in the list of edges of which this edge is located
+    int weight;
+    struct edge *next;
+};
+
+struct graph {
+    int vertexNumber;
+    int edgesNumber;
+    vertex *head; // vertex list head
+};
+
 //Functions to work with graph
 graph* create(); //create empty graph
 graph* addVertex(graph* graph, int x, int y, int value);
