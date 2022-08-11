@@ -17,7 +17,7 @@ int DFS(vertex *startVertex, vertex *previousVertex, int finishVertexValue)
     edge *bufEdgeListHead = previousVertex->edge;
     while (bufEdgeListHead) {
         vertex *neighbourVertex = bufEdgeListHead->endPoint;
-        neighbourVertex->previousVertex = previousVertex;
+        neighbourVertex->previous = previousVertex;
         if (DFS(neighbourVertex, previousVertex, finishVertexValue)) {
             return 1;
         }
@@ -33,7 +33,7 @@ void getDFSResult(graph* graph, int startVertexValue, int finishVertexValue)
     vertex *bufHead = graph->head;
     while (bufHead) {
         bufHead->color = -1;
-        bufHead->previousVertex = NULL;
+        bufHead->previous = NULL;
         bufHead = bufHead->next;
     }
     vertex *startVertex = findVertex(graph, startVertexValue);
@@ -43,7 +43,7 @@ void getDFSResult(graph* graph, int startVertexValue, int finishVertexValue)
         printf("Way: \n");
         while (finishVertex) {
             printf("%d ", finishVertex->value);
-            finishVertex = finishVertex->previousVertex;
+            finishVertex = finishVertex->previous;
         }
     }
     else {
@@ -99,7 +99,7 @@ int bellmanFord(graph* graph, int startVertexValue, int finishVertexValue)
     }
     else {
         printf("There is no way");
-        return -1;
+        return 0;
     }
     return 0;
 }

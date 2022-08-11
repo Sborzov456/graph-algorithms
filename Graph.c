@@ -124,7 +124,7 @@ vertex *findVertex(graph *graph, int value) {
     while (bufHead && bufHead->value != value) {
         bufHead = bufHead->next;
     }
-    if (bufHead != NULL) {
+    if (bufHead) {
         return bufHead;
     }
     else {
@@ -148,9 +148,4 @@ void printGraph(graph *graph) {
         printf("\n");
     }
 }
-
-
-
-
-
 

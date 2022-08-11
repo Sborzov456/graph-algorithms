@@ -20,7 +20,7 @@ struct vertex {
     int color;//-1 - white, 1 - gray [FOR DFS]
     struct edge *edge; // list of edges
     struct vertex *next;
-    struct vertex *previousVertex;//[FOR DFS]
+    struct vertex *previous;//[FOR DFS]
 };
 
 struct edge {
