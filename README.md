@@ -31,4 +31,18 @@
    The Bellman-Ford algorithm is used to find the shortest path between given vertices.
 
    In the project, this algorithm can be called by a `BellmanFord()` function.
-  
+   
+### :exclamation: [Topological Sort](https://en.wikipedia.org/wiki/Topological_sorting)
+   The Topological Sorting algorithm sorts the vertices so that any edge leads from a lower-numbered vertex to a higher-numbered vertex. Since if there are cycles in      the graph, such sorting is impossible, so it can be used to check for acyclicity.
+
+   In the project, this algorithm can be called by a `topologicalSort()` function.
+## :pushpin:  Implemented functions
+   - [x] `addVertex`
+   - [x] `addEdge`
+   - [x] `deleteVertex`
+   - [x] `deleteEdge`
+   - [x] `findVertex`
+   - [x] `printGraph`
+   - [x] `getDFSResult`
+   - [x] `BellmanFord`
+   - [x] `topologicalSort`    
