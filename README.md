@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-Hello world!
-=======
 # Weighted Directed Graph :arrow_right:
 ## :pushpin: Short Description 
    This project implements a _weighted directed graph_ data structure that is defined by _adjacency lists_.
@@ -35,5 +32,3 @@ Hello world!
 
    In the project, this algorithm can be called by a `BellmanFord()` function.
   
-       
->>>>>>> e162bbdf5c8d66b97353347e24d668030a75c740
