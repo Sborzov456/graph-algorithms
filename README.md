@@ -8,17 +8,28 @@
    
    _The graph itself is a list of vertices_. Therefore, in the vertex structure there is a pointer to the next one.
    
-   ```C++
+   ```C
    struct vertex {
      struct edge *edge; // list of edges
      struct vertex *next;
    }
    ```
    
-   ```C++
+   ```C
    struct edge {
     vertex *endPoint;
     struct edge *next;
   }
    ```
 ## :pushpin: Algorithms
+### :exclamation: [DFS](https://en.wikipedia.org/wiki/Depth-first_search)(_Depth-First Search_)
+   The DFS algorithm is used to _find a path between two given vertices_. If one vertex is not reachable from another, an error code is returned.
+
+   In the project, this algorithm can be called by a `getDFSResult()` function.
+   
+### :exclamation: [Bellman-Ford Algorithm](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm)
+   The Bellman-Ford algorithm is used to find the shortest path between given vertices.
+
+   In the project, this algorithm can be called by a `BellmanFord()` function.
+  
+       
