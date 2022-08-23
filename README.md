@@ -37,11 +37,13 @@
 
    In the project, this algorithm can be called by a `topologicalSort()` function.
 ## :pushpin:  Implemented functions
+   Each vertex stores its coordinates on the plane (for a possible implementation of a graphical interface) and some information represented by an integer.
+
    - [x] `addVertex`
    - [x] `addEdge`
    - [x] `deleteVertex`
    - [x] `deleteEdge`
-   - [x] `findVertex`
+   - [x] `findVertex` (_finds a vertex by its value_)
    - [x] `printGraph`
    - [x] `getDFSResult`
    - [x] `BellmanFord`
