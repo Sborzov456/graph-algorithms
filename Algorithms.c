@@ -52,7 +52,7 @@ void getDFSResult(graph* graph, int startVertexValue, int finishVertexValue)
 }
 
 //Bellman-Ford
-int bellmanFord(graph* graph, int startVertexValue, int finishVertexValue)
+int BellmanFord(graph* graph, int startVertexValue, int finishVertexValue)
 {
     int *distanceArray = (int *) malloc((graph->vertexNumber + 1) * sizeof(int));
     vertex **res = (vertex **) malloc((graph->vertexNumber + 1) * sizeof(vertex *));

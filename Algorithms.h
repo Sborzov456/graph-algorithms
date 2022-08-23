@@ -16,7 +16,7 @@ void getDFSResult(graph* graph, int startVertexValue, int finishVertexValue); //
 //need two functions since the DFS(...) is recursive function
 
 //Bellman-Ford Algorithm
-int bellmanFord(graph* graph, int startVertexValue, int finishVertexValue);
+int BellmanFord(graph* graph, int startVertexValue, int finishVertexValue);
 
 //Topological Sort
 void topologicalSort(graph* graph);

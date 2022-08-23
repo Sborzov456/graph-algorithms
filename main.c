@@ -77,7 +77,7 @@ int main()
             scanf("%d", &startVertexValue);
             printf("Enter the end point of the way: ");
             scanf("%d", &finishVertexValue);
-            bellmanFord(graph, startVertexValue, finishVertexValue);
+            BellmanFord(graph, startVertexValue, finishVertexValue);
         }
         if (option == 8)
         {
